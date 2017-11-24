@@ -1,0 +1,10 @@
+# IDE
+**/.DS_Store
+qrc_shaders.cpp
+
+# Compiled Object files
+*.pro
+*.pro.user
+*.slo
+*.lo
+*.o
