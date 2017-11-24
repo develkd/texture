@@ -6,9 +6,9 @@
 
 uniform vec3 vectorColor;
 
-//in VertexData {
-//    vec3 normal;
-//} VertexIn;
+in VertexData {
+    vec3 normal;
+} VertexIn;
 
 out vec4 outColor;
 

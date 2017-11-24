@@ -18,8 +18,8 @@ uniform float scale;
 
 void main()
 {
+/*
     // for each vertex, generate a line showing the vector
-    /*
     for(int i=0; i<3; i++) {
         vec3 v = normalize(VertexIn[i].vector) * scale;
         vec4 p  = gl_in[i].gl_Position;

@@ -8,11 +8,11 @@ uniform mat4 projectionMatrix;
 
 layout (triangles) in;
 layout (line_strip, max_vertices=2) out;
-/*
+
 in VertexData {
     vec3 vector;
 } VertexIn[3];
-*/
+
 uniform float scale;
 
 void main()

@@ -14,9 +14,9 @@ in vec3 normal_MC;
 in vec3 tangent_MC;
 in vec3 bitangent_MC;
 
-//out VertexData {
-//    vec3 vector;
-//} VertexOut;
+out VertexData {
+    vec3 vector;
+} VertexOut;
 
 
 void main()
