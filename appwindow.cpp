@@ -59,6 +59,10 @@ AppWindow::AppWindow(QWidget *parent) :
 
     } );
 
+    // combo box to change the model
+    connect(ui->textureComboBox, &QComboBox::currentTextChanged,
+            [this](const QString& txt) { scene().setTexture(txt);
+    } );
     // main shader parameters
     connect(ui->blackBgRadioButton, &QRadioButton::clicked,
             [this](bool) { scene().setBackgroundColor(QVector3D(0,0,0)); } );

@@ -11,5 +11,30 @@
         <file>textures/earth_day.jpg</file>
         <file>textures/earth_topography_2048_NRM.png</file>
         <file>textures/earth_topography_2048.jpg</file>
+        <file>textures/terrain/beach_NRM.png</file>
+        <file>textures/terrain/rock2_COLOR.png</file>
+        <file>textures/terrain/rock2_DISP.png</file>
+        <file>textures/terrain/rock2_NRM.png</file>
+        <file>textures/terrain/underwater_COLOR.png</file>
+        <file>textures/terrain/underwater_DISP.png</file>
+        <file>textures/terrain/underwater_NRM.png</file>
+        <file>textures/terrain/beach_OCC.png</file>
+        <file>textures/terrain/beach_SPEC.png</file>
+        <file>textures/terrain/grass_OCC.png</file>
+        <file>textures/terrain/grass_SPEC.png</file>
+        <file>textures/terrain/mars_COLOR.png</file>
+        <file>textures/terrain/mars_DISP.png</file>
+        <file>textures/terrain/mars_NRM.png</file>
+        <file>textures/terrain/mars_OCC.png</file>
+        <file>textures/terrain/mars_SPEC.png</file>
+        <file>textures/terrain/rock2_OCC.png</file>
+        <file>textures/terrain/rock2_SPEC.png</file>
+        <file>textures/terrain/underwater_OCC.png</file>
+        <file>textures/terrain/underwater_SPEC.png</file>
+        <file>textures/terrain/beach_COLOR.png</file>
+        <file>textures/terrain/beach_DISP.png</file>
+        <file>textures/terrain/grass_COLOR.png</file>
+        <file>textures/terrain/grass_DISP.png</file>
+        <file>textures/terrain/grass_NRM.png</file>
     </qresource>
 </RCC>

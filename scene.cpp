@@ -86,9 +86,26 @@ void Scene::makeNodes()
     auto disp   = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_topography_2048.jpg").mirrored());
     auto bumps  = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_topography_2048_NRM.png").mirrored());
 
+    auto color_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_COLOR.png").mirrored());
+    auto disp_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_DISP.png").mirrored());
+    auto occ_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_OCC.png").mirrored());
+    auto spec_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_SPEC.png").mirrored());
+    auto bumps_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_NRM.png").mirrored());
+
     // tex parameters
     clouds->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
     clouds->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
+    planetMaterial_ ->textures_["BUMP_EARTH"] = bumps;
+    planetMaterial_ ->textures_["DISP_EARTH"] = disp;
+    planetMaterial_ ->textures_["COLOR_EARTH"] = day;
+    planetMaterial_ ->textures_["OCC_EARTH"] = night;
+    planetMaterial_ ->textures_["SPEC_EARTH"] = gloss;
+
+    planetMaterial_ ->textures_["BUMP_MARS"] = bumps_mars;
+    planetMaterial_ ->textures_["DISP_MARS"] = disp_mars;
+    planetMaterial_ ->textures_["COLOR_MARS"] = color_mars;
+    planetMaterial_ ->textures_["OCC_MARS"] = occ_mars;
+    planetMaterial_ ->textures_["SPEC_MARS"] = spec_mars;
 
     // assign textures to material
     planetMaterial_->planet.dayTexture = day;
@@ -153,10 +170,12 @@ void Scene::makeScene()
 
 void Scene::setShader(QString txt)
 {
+
     if(txt == "None") {
         material_ = nullptr;
-    }
-    else if(txt == "Phong") {
+    }else{
+
+    if(txt == "Phong") {
         material_ = planetMaterial_;
         planetMaterial_->planet.debug_texcoords = false;
         planetMaterial_->planet.debugWaterLand = false;
@@ -255,6 +274,8 @@ void Scene::setShader(QString txt)
         planetMaterial_->planet.useCloudsTexture = true;
     }
 
+
+    }
     update();
 }
 
@@ -411,6 +432,30 @@ void Scene::setSceneNode(QString node)
 
     update();
 }
+
+
+void Scene::setTexture(QString txt)
+{
+    if(txt == "Mars") {
+       planetMaterial_->bump.tex = planetMaterial_->textures_["BUMP_MARS"];
+       planetMaterial_->displacement.tex = planetMaterial_->textures_["DISP_MARS"];
+        planetMaterial_->planet.dayTexture = planetMaterial_ ->textures_["COLOR_MARS"];
+        planetMaterial_->planet.nightTexture = planetMaterial_ ->textures_["OCC_MARS"] ;
+        planetMaterial_->planet.glossTexture = planetMaterial_ ->textures_["SPEC_MARS"];
+
+    }
+    else if(txt == "Earth") {
+        planetMaterial_->bump.tex = planetMaterial_->textures_["BUMP_EARTH"];
+        planetMaterial_->displacement.tex = planetMaterial_->textures_["DISP_EARTH"];
+        planetMaterial_->planet.dayTexture = planetMaterial_ ->textures_["COLOR_EARTH"];
+        planetMaterial_->planet.nightTexture =  planetMaterial_ ->textures_["OCC_EARTH"];
+        planetMaterial_->planet.glossTexture = planetMaterial_ ->textures_["SPEC_EARTH"];
+
+    }
+
+    update();
+}
+
 
 // pass key/mouse events on to navigator objects
 void Scene::keyPressEvent(QKeyEvent *event) {

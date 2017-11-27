@@ -55,6 +55,8 @@ public slots:
     // change shader program
     void setShader(QString txt);
 
+    void setTexture(QString txt);
+
     // change background color
     void setBackgroundColor(QVector3D rgb) {
         bgcolor_ = rgb; update();
