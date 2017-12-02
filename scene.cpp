@@ -62,7 +62,9 @@ void Scene::makeNodes()
 {
     // load shader source files and compile them into OpenGL program objects
     auto planet_prog = createProgram(":/shaders/planet_with_bumps.vert", ":/shaders/planet_with_bumps.frag");
+    auto planet_mars = createProgram(":/shaders/mars.vert", ":/shaders/mars.frag");
     planetMaterial_ = std::make_shared<PlanetMaterial>(planet_prog);
+    marsMaterial_ = std::make_shared<PlanetMaterial>(planet_mars);
     planetMaterial_->phong.shininess = 10;
 
     // program (with additional geometry shader) to visualize wireframe
@@ -101,11 +103,11 @@ void Scene::makeNodes()
     planetMaterial_ ->textures_["OCC_EARTH"] = night;
     planetMaterial_ ->textures_["SPEC_EARTH"] = gloss;
 
-    planetMaterial_ ->textures_["BUMP_MARS"] = bumps_mars;
-    planetMaterial_ ->textures_["DISP_MARS"] = disp_mars;
-    planetMaterial_ ->textures_["COLOR_MARS"] = color_mars;
-    planetMaterial_ ->textures_["OCC_MARS"] = occ_mars;
-    planetMaterial_ ->textures_["SPEC_MARS"] = spec_mars;
+    marsMaterial_ ->textures_["BUMP_MARS"] = bumps_mars;
+    marsMaterial_ ->textures_["DISP_MARS"] = disp_mars;
+    marsMaterial_ ->textures_["COLOR_MARS"] = color_mars;
+    marsMaterial_ ->textures_["OCC_MARS"] = occ_mars;
+    marsMaterial_ ->textures_["SPEC_MARS"] = spec_mars;
 
     // assign textures to material
     planetMaterial_->planet.dayTexture = day;
@@ -125,7 +127,7 @@ void Scene::makeNodes()
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
     meshes_["Sphere"] = std::make_shared<Mesh>(make_shared<geom::Planet>(80,80), std);
     meshes_["Torus"]  = std::make_shared<Mesh>(make_shared<geom::Torus>(4, 2, 120,40), std);
-    meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(20,20), std);
+    meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(100,100), marsMaterial_);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]
@@ -437,14 +439,16 @@ void Scene::setSceneNode(QString node)
 void Scene::setTexture(QString txt)
 {
     if(txt == "Mars") {
-       planetMaterial_->bump.tex = planetMaterial_->textures_["BUMP_MARS"];
-       planetMaterial_->displacement.tex = planetMaterial_->textures_["DISP_MARS"];
-        planetMaterial_->planet.dayTexture = planetMaterial_ ->textures_["COLOR_MARS"];
-        planetMaterial_->planet.nightTexture = planetMaterial_ ->textures_["OCC_MARS"] ;
-        planetMaterial_->planet.glossTexture = planetMaterial_ ->textures_["SPEC_MARS"];
+         material_ = marsMaterial_;
+       marsMaterial_->bump.tex = marsMaterial_->textures_["BUMP_MARS"];
+       marsMaterial_->displacement.tex = marsMaterial_->textures_["DISP_MARS"];
+        marsMaterial_->planet.dayTexture = marsMaterial_ ->textures_["COLOR_MARS"];
+        marsMaterial_->planet.nightTexture = marsMaterial_ ->textures_["OCC_MARS"] ;
+        marsMaterial_->planet.glossTexture = marsMaterial_ ->textures_["SPEC_MARS"];
 
     }
     else if(txt == "Earth") {
+         material_ = planetMaterial_;
         planetMaterial_->bump.tex = planetMaterial_->textures_["BUMP_EARTH"];
         planetMaterial_->displacement.tex = planetMaterial_->textures_["DISP_EARTH"];
         planetMaterial_->planet.dayTexture = planetMaterial_ ->textures_["COLOR_EARTH"];

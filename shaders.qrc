@@ -13,8 +13,6 @@
         <file>shaders/wireframe.frag</file>
         <file>shaders/wireframe.geom</file>
         <file>shaders/wireframe.vert</file>
-        <file>shaders/planet_with_bumps_kopie.frag</file>
-        <file>shaders/planet_with_bumps_kopie.vert</file>
         <file>shaders/mars.frag</file>
         <file>shaders/mars.vert</file>
     </qresource>
