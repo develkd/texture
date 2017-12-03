@@ -168,6 +168,26 @@
            </item>
            <item>
             <property name="text">
+             <string>Rock</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Rock+Grass</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Grass+Beach</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>MarsPlanet</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
              <string>Debug Tex Coords</string>
             </property>
            </item>

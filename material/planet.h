@@ -48,8 +48,6 @@ public:
     } displacement;
 
 
-    std::map<QString, std::shared_ptr<QOpenGLTexture>> textures_;
-
     // bind underlying shader program and set required uniforms
     void apply(unsigned int light_pass = 0) override;
 

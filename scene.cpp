@@ -65,7 +65,9 @@ void Scene::makeNodes()
     auto planet_mars = createProgram(":/shaders/mars.vert", ":/shaders/mars.frag");
     planetMaterial_ = std::make_shared<PlanetMaterial>(planet_prog);
     marsMaterial_ = std::make_shared<PlanetMaterial>(planet_mars);
+
     planetMaterial_->phong.shininess = 10;
+    marsMaterial_->phong.shininess = 10;
 
     // program (with additional geometry shader) to visualize wireframe
     auto wire_prog = createProgram(":/shaders/wireframe.vert",
@@ -90,24 +92,17 @@ void Scene::makeNodes()
 
     auto color_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_COLOR.png").mirrored());
     auto disp_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_DISP.png").mirrored());
-    auto occ_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_OCC.png").mirrored());
-    auto spec_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_SPEC.png").mirrored());
     auto bumps_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_NRM.png").mirrored());
+
+    auto grass  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/grass_COLOR.png").mirrored());
+    auto beach  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/beach_COLOR.png").mirrored());
 
     // tex parameters
     clouds->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
     clouds->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
-    planetMaterial_ ->textures_["BUMP_EARTH"] = bumps;
-    planetMaterial_ ->textures_["DISP_EARTH"] = disp;
-    planetMaterial_ ->textures_["COLOR_EARTH"] = day;
-    planetMaterial_ ->textures_["OCC_EARTH"] = night;
-    planetMaterial_ ->textures_["SPEC_EARTH"] = gloss;
 
-    marsMaterial_ ->textures_["BUMP_MARS"] = bumps_mars;
-    marsMaterial_ ->textures_["DISP_MARS"] = disp_mars;
-    marsMaterial_ ->textures_["COLOR_MARS"] = color_mars;
-    marsMaterial_ ->textures_["OCC_MARS"] = occ_mars;
-    marsMaterial_ ->textures_["SPEC_MARS"] = spec_mars;
+    color_mars->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
+    color_mars->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
 
     // assign textures to material
     planetMaterial_->planet.dayTexture = day;
@@ -116,6 +111,14 @@ void Scene::makeNodes()
     planetMaterial_->planet.cloudsTexture = clouds;
     planetMaterial_->bump.tex = bumps;
     planetMaterial_->displacement.tex = disp;
+
+
+    marsMaterial_->planet.dayTexture = color_mars;
+    marsMaterial_->planet.nightTexture = beach;
+    marsMaterial_->planet.glossTexture = grass;
+    marsMaterial_->planet.cloudsTexture = clouds;
+    marsMaterial_->bump.tex = bumps_mars;
+    marsMaterial_->displacement.tex = disp_mars;
 
     // load meshes from .obj files and assign shader programs to them
     auto std = planetMaterial_;
@@ -274,6 +277,26 @@ void Scene::setShader(QString txt)
         planetMaterial_->planet.useNightTexture = true;
         planetMaterial_->planet.useGlossTexture = true;
         planetMaterial_->planet.useCloudsTexture = true;
+    }
+    else if(txt == "Rock") {
+         material_ = marsMaterial_;
+        marsMaterial_->planet.debug_texcoords = false;
+        marsMaterial_->planet.debug = false;
+        marsMaterial_->planet.debugWaterLand = false;
+        marsMaterial_->planet.useDayTexture = true;
+        marsMaterial_->planet.useNightTexture = false;
+        marsMaterial_->planet.useGlossTexture = false;
+        marsMaterial_->planet.useCloudsTexture = false;
+    }
+    else if(txt == "MarsPlanet") {
+        material_ = marsMaterial_;
+        marsMaterial_->planet.debug_texcoords = false;
+        marsMaterial_->planet.debug = false;
+        marsMaterial_->planet.debugWaterLand = false;
+        marsMaterial_->planet.useDayTexture = true;
+        marsMaterial_->planet.useNightTexture = true;
+        marsMaterial_->planet.useGlossTexture = true;
+        marsMaterial_->planet.useCloudsTexture = true;
     }
 
 
@@ -439,22 +462,10 @@ void Scene::setSceneNode(QString node)
 void Scene::setTexture(QString txt)
 {
     if(txt == "Mars") {
-         material_ = marsMaterial_;
-       marsMaterial_->bump.tex = marsMaterial_->textures_["BUMP_MARS"];
-       marsMaterial_->displacement.tex = marsMaterial_->textures_["DISP_MARS"];
-        marsMaterial_->planet.dayTexture = marsMaterial_ ->textures_["COLOR_MARS"];
-        marsMaterial_->planet.nightTexture = marsMaterial_ ->textures_["OCC_MARS"] ;
-        marsMaterial_->planet.glossTexture = marsMaterial_ ->textures_["SPEC_MARS"];
-
-    }
+        material_ = marsMaterial_;
+   }
     else if(txt == "Earth") {
          material_ = planetMaterial_;
-        planetMaterial_->bump.tex = planetMaterial_->textures_["BUMP_EARTH"];
-        planetMaterial_->displacement.tex = planetMaterial_->textures_["DISP_EARTH"];
-        planetMaterial_->planet.dayTexture = planetMaterial_ ->textures_["COLOR_EARTH"];
-        planetMaterial_->planet.nightTexture =  planetMaterial_ ->textures_["OCC_EARTH"];
-        planetMaterial_->planet.glossTexture = planetMaterial_ ->textures_["SPEC_EARTH"];
-
     }
 
     update();
