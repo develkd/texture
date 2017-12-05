@@ -31,5 +31,77 @@
         <file>textures/terrain/grass_COLOR.png</file>
         <file>textures/terrain/grass_DISP.png</file>
         <file>textures/terrain/grass_NRM.png</file>
+        <file>models/arrow/arrow.mtl</file>
+        <file>models/BladeOfGrass/BladeOfGrass.mtl</file>
+        <file>models/BladeOfGrass/BladeOfGrass.png</file>
+        <file>models/CV - Essex class/_2.png</file>
+        <file>models/CV - Essex class/_6.png</file>
+        <file>models/CV - Essex class/_Blinds_Roman_Hobbled_Blue_1.png</file>
+        <file>models/CV - Essex class/Blinds_Roman_Hobbled_Blue.png</file>
+        <file>models/CV - Essex class/Blinds_Vertical_Stripe_Gray.png</file>
+        <file>models/CV - Essex class/Blinds_Wood_White.png</file>
+        <file>models/CV - Essex class/bumpmap_flat.png</file>
+        <file>models/CV - Essex class/Cladding_Siding_Tan.png</file>
+        <file>models/CV - Essex class/Color_004.png</file>
+        <file>models/CV - Essex class/diff_null_1.png</file>
+        <file>models/CV - Essex class/diff_null_10.png</file>
+        <file>models/CV - Essex class/diff_null_11.png</file>
+        <file>models/CV - Essex class/diff_null_12.png</file>
+        <file>models/CV - Essex class/diff_null_13.png</file>
+        <file>models/CV - Essex class/diff_null_14.png</file>
+        <file>models/CV - Essex class/diff_null_15.png</file>
+        <file>models/CV - Essex class/diff_null_16.png</file>
+        <file>models/CV - Essex class/diff_null_17.png</file>
+        <file>models/CV - Essex class/diff_null_19.png</file>
+        <file>models/CV - Essex class/diff_null_2.png</file>
+        <file>models/CV - Essex class/diff_null_3.png</file>
+        <file>models/CV - Essex class/diff_null_4.png</file>
+        <file>models/CV - Essex class/diff_null_7.png</file>
+        <file>models/CV - Essex class/diff_null_8.png</file>
+        <file>models/CV - Essex class/diff_null_9.png</file>
+        <file>models/CV - Essex class/diff_null_BackColor.png</file>
+        <file>models/CV - Essex class/diff_null_Black1.png</file>
+        <file>models/CV - Essex class/diff_null_Color002.png</file>
+        <file>models/CV - Essex class/diff_null_Color003.png</file>
+        <file>models/CV - Essex class/diff_null_Color005.png</file>
+        <file>models/CV - Essex class/diff_null_Color006.png</file>
+        <file>models/CV - Essex class/diff_null_Color007.png</file>
+        <file>models/CV - Essex class/diff_null_Color008.png</file>
+        <file>models/CV - Essex class/diff_null_FrontColor.png</file>
+        <file>models/CV - Essex class/diff_null_Gray1.png</file>
+        <file>models/CV - Essex class/diff_null_mat1.png</file>
+        <file>models/CV - Essex class/diff_null_Material1.png</file>
+        <file>models/CV - Essex class/diff_null_Material5.png</file>
+        <file>models/CV - Essex class/diff_null_Model001Mate1.png</file>
+        <file>models/CV - Essex class/diff_null_Model001Materia.png</file>
+        <file>models/CV - Essex class/essex_scb-125_generic.mtl</file>
+        <file>models/CV - Essex class/image_15.png</file>
+        <file>models/CV - Essex class/image_16.png</file>
+        <file>models/CV - Essex class/Metal_Aluminum_Anodized.png</file>
+        <file>models/CV - Essex class/Metal_Rough.png</file>
+        <file>models/CV - Essex class/Metal_Seamed.png</file>
+        <file>models/CV - Essex class/prev.png</file>
+        <file>models/CV - Essex class/Yorktown_paint6.png</file>
+        <file>models/duck/duck.obj.mtl</file>
+        <file>models/duck/duckCM.png</file>
+        <file>models/plane/BodyTexture.bmp</file>
+        <file>models/plane/BodyTexture.png</file>
+        <file>models/plane/plane.mtl</file>
+        <file>models/ring/ring.mtl</file>
+        <file>models/target/target.mtl</file>
+        <file>models/teapot/copyright.txt</file>
+        <file>models/teapot/default.mtl</file>
+        <file>models/teapot/default.png</file>
+        <file>models/teapot/teapot.max</file>
+        <file>models/tree/BroadleafBark.png</file>
+        <file>models/tree/SampleLeaves_2.png</file>
+        <file>models/tree/tree.mtl</file>
+        <file>models/plane/plane.obj</file>
+        <file>models/ring/ring.obj</file>
+        <file>models/target/target.obj</file>
+        <file>models/tree/tree.obj</file>
+        <file>models/CV - Essex class/essex_scb-125_generic.obj</file>
+        <file>models/BladeOfGrass/BladeOfGrass.obj</file>
+        <file>models/arrow/arrow.obj</file>
     </qresource>
 </RCC>

@@ -144,7 +144,7 @@ protected:
     QVector3D bgcolor_ = QVector3D(0.4f,0.4f,0.4f);
 
     // different materials to be demonstrated
-    std::shared_ptr<PlanetMaterial> planetMaterial_,marsMaterial_ ,material_;
+    std::shared_ptr<PlanetMaterial> planetMaterial_,rockMaterial_ ,material_;
     std::shared_ptr<WireframeMaterial> wireframeMaterial_;
     std::shared_ptr<VectorsMaterial> vectorsMaterial_;
 

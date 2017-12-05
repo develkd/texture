@@ -1,0 +1,14 @@
+# Blender MTL File: 'Trawa Stojaca.blend'
+# Material Count: 1
+
+newmtl Trawa
+Ns 96.078431
+Ka 0.300000 0.300000 0.300000
+Kd 0.640000 0.640000 0.640000
+Ks 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.000000
+illum 1
+map_Ka BladeOfGrass.png
+map_Kd BladeOfGrass.png
+map_d BladeOfGrass.png

@@ -62,12 +62,12 @@ void Scene::makeNodes()
 {
     // load shader source files and compile them into OpenGL program objects
     auto planet_prog = createProgram(":/shaders/planet_with_bumps.vert", ":/shaders/planet_with_bumps.frag");
-    auto planet_mars = createProgram(":/shaders/mars.vert", ":/shaders/mars.frag");
+    auto rock_prog = createProgram(":/shaders/mars.vert", ":/shaders/mars.frag");
     planetMaterial_ = std::make_shared<PlanetMaterial>(planet_prog);
-    marsMaterial_ = std::make_shared<PlanetMaterial>(planet_mars);
+    rockMaterial_ = std::make_shared<PlanetMaterial>(rock_prog);
 
     planetMaterial_->phong.shininess = 10;
-    marsMaterial_->phong.shininess = 10;
+    rockMaterial_->phong.shininess = 10;
 
     // program (with additional geometry shader) to visualize wireframe
     auto wire_prog = createProgram(":/shaders/wireframe.vert",
@@ -90,9 +90,9 @@ void Scene::makeNodes()
     auto disp   = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_topography_2048.jpg").mirrored());
     auto bumps  = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_topography_2048_NRM.png").mirrored());
 
-    auto color_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_COLOR.png").mirrored());
-    auto disp_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_DISP.png").mirrored());
-    auto bumps_mars  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_NRM.png").mirrored());
+    auto rock  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_COLOR.png").mirrored());
+    auto rock_disp  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_DISP.png").mirrored());
+    auto rock_bumps  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/rock2_NRM.png").mirrored());
 
     auto grass  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/grass_COLOR.png").mirrored());
     auto beach  = std::make_shared<QOpenGLTexture>(QImage(":/textures/terrain/beach_COLOR.png").mirrored());
@@ -101,8 +101,8 @@ void Scene::makeNodes()
     clouds->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
     clouds->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
 
-    color_mars->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
-    color_mars->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
+    rock->setWrapMode(QOpenGLTexture::DirectionS, QOpenGLTexture::Repeat);
+    rock->setWrapMode(QOpenGLTexture::DirectionT, QOpenGLTexture::Repeat);
 
     // assign textures to material
     planetMaterial_->planet.dayTexture = day;
@@ -113,12 +113,12 @@ void Scene::makeNodes()
     planetMaterial_->displacement.tex = disp;
 
 
-    marsMaterial_->planet.dayTexture = color_mars;
-    marsMaterial_->planet.nightTexture = beach;
-    marsMaterial_->planet.glossTexture = grass;
-    marsMaterial_->planet.cloudsTexture = clouds;
-    marsMaterial_->bump.tex = bumps_mars;
-    marsMaterial_->displacement.tex = disp_mars;
+    rockMaterial_->planet.dayTexture = rock;
+    rockMaterial_->planet.nightTexture = beach;
+    rockMaterial_->planet.glossTexture = grass;
+    rockMaterial_->planet.cloudsTexture = clouds;
+    rockMaterial_->bump.tex = rock_bumps;
+    rockMaterial_->displacement.tex = rock_disp;
 
     // load meshes from .obj files and assign shader programs to them
     auto std = planetMaterial_;
@@ -130,7 +130,7 @@ void Scene::makeNodes()
     meshes_["Cube"]   = std::make_shared<Mesh>(make_shared<geom::Cube>(), std);
     meshes_["Sphere"] = std::make_shared<Mesh>(make_shared<geom::Planet>(80,80), std);
     meshes_["Torus"]  = std::make_shared<Mesh>(make_shared<geom::Torus>(4, 2, 120,40), std);
-    meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(100,100), marsMaterial_);
+    meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(10,10), rockMaterial_);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]
@@ -278,25 +278,16 @@ void Scene::setShader(QString txt)
         planetMaterial_->planet.useGlossTexture = true;
         planetMaterial_->planet.useCloudsTexture = true;
     }
+
     else if(txt == "Rock") {
-         material_ = marsMaterial_;
-        marsMaterial_->planet.debug_texcoords = false;
-        marsMaterial_->planet.debug = false;
-        marsMaterial_->planet.debugWaterLand = false;
-        marsMaterial_->planet.useDayTexture = true;
-        marsMaterial_->planet.useNightTexture = false;
-        marsMaterial_->planet.useGlossTexture = false;
-        marsMaterial_->planet.useCloudsTexture = false;
-    }
-    else if(txt == "MarsPlanet") {
-        material_ = marsMaterial_;
-        marsMaterial_->planet.debug_texcoords = false;
-        marsMaterial_->planet.debug = false;
-        marsMaterial_->planet.debugWaterLand = false;
-        marsMaterial_->planet.useDayTexture = true;
-        marsMaterial_->planet.useNightTexture = true;
-        marsMaterial_->planet.useGlossTexture = true;
-        marsMaterial_->planet.useCloudsTexture = true;
+        material_ = rockMaterial_;
+        rockMaterial_->planet.debug_texcoords = false;
+        rockMaterial_->planet.debug = false;
+        rockMaterial_->planet.debugWaterLand = false;
+        rockMaterial_->planet.useDayTexture = true;
+        rockMaterial_->planet.useNightTexture = true;
+        rockMaterial_->planet.useGlossTexture = true;
+        rockMaterial_->planet.useCloudsTexture = true;
     }
 
 
@@ -462,7 +453,7 @@ void Scene::setSceneNode(QString node)
 void Scene::setTexture(QString txt)
 {
     if(txt == "Mars") {
-        material_ = marsMaterial_;
+        material_ = rockMaterial_;
    }
     else if(txt == "Earth") {
          material_ = planetMaterial_;

@@ -15,5 +15,7 @@
         <file>shaders/wireframe.vert</file>
         <file>shaders/mars.frag</file>
         <file>shaders/mars.vert</file>
+        <file>shaders/terrain.frag</file>
+        <file>shaders/terrain.vert</file>
     </qresource>
 </RCC>

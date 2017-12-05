@@ -73,3 +73,5 @@ shaders.depends += \
     $$PWD/assets/shaders/phong.frag $$PWD/assets/shaders/phong.vert 
 shaders.commands =
 QMAKE_EXTRA_TARGETS += shaders
+
+DISTFILES +=

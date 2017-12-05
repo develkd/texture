@@ -1,0 +1,31 @@
+# Blender MTL File: 'None'
+# Material Count: 3
+
+newmtl BroadleafBark
+Ns 135.294118
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.098039 0.098039 0.098039
+Ni 1.000000
+d 0.999000
+illum 2
+map_Kd BroadleafBark.png
+
+newmtl Default
+Ns 135.294118
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.098039 0.098039 0.098039
+Ni 1.000000
+d 0.999000
+illum 2
+
+newmtl SampleLeaves_2
+Ns 135.294118
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.098039 0.098039 0.098039
+Ni 1.000000
+d 0.999000
+illum 2
+map_Kd SampleLeaves_2.png
