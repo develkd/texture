@@ -64,4 +64,12 @@ public:
 
 };
 
+class CubeMap : public ParametricSurface {
+public:
+
+    // make unit rectangle in X-Z plane
+    CubeMap(size_t patches_u, size_t patches_v);
+
+};
+
 } // namespace geom

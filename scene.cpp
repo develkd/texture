@@ -134,16 +134,18 @@ void Scene::makeNodes()
     meshes_["Sphere"] = std::make_shared<Mesh>(make_shared<geom::Planet>(80,80), std);
     meshes_["Torus"]  = std::make_shared<Mesh>(make_shared<geom::Torus>(4, 2, 120,40), std);
     meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(10,10), rockMaterial_);
+    meshes_["CubeMap"]   = std::make_shared<Mesh>(make_shared<geom::CubeMap>(512,512), rockMaterial_);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]
     nodes_["Sphere"]  = createNode(meshes_["Sphere"], true);
     nodes_["Torus"]   = createNode(meshes_["Torus"], true);
     nodes_["Rect"]    = createNode(meshes_["Rect"], true);
-    nodes_["Cube"]    = createNode(meshes_["Cube"], true);
+    nodes_["Cube"]    = createNode(meshes_["CubeMap"], true);
     nodes_["Duck"]    = createNode(meshes_["Duck"], true);
     nodes_["Teapot"]  = createNode(meshes_["Teapot"], true);
     nodes_["Dwarf"]   = createNode(meshes_["Dwarf"], true);
+    nodes_["CubeMap"]   = createNode(meshes_["CubeMap"], true);
 
     // rotate some models
     nodes_["Sphere"]->transformation.rotate(-90, QVector3D(1,0,0));

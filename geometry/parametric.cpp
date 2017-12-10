@@ -168,6 +168,19 @@ Rect::Rect(size_t patches_u, size_t patches_v)
 
 }
 
+CubeMap::CubeMap(size_t patches_u, size_t patches_v)
+{
+
+    auto pos = [](float s, float t) -> QVector3D {
+        return QVector3D(-0.5 + s, 0, 0.5 - t );
+    };
+
+    generate(QVector2D(0,0),
+             QVector2D(1,1),
+             patches_u, patches_v,
+             pos);
+
+}
 
 
 } // namespace geom

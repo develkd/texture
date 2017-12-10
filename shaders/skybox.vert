@@ -14,7 +14,7 @@ out vec3 positionFragment;
 out vec2 uvI;
 
 uniform Transform transform;
-uniform sampler2D planeTexture;
+
 
 void main(void)
 {

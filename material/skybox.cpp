@@ -1,6 +1,6 @@
 #include "skybox.h"
 
-Skybox::Skybox()
+void Skybox::apply(unsigned int light_pass)
 {
-
+  prog_->bind();
 }
