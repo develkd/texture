@@ -103,5 +103,17 @@
         <file>models/CV - Essex class/essex_scb-125_generic.obj</file>
         <file>models/BladeOfGrass/BladeOfGrass.obj</file>
         <file>models/arrow/arrow.obj</file>
+        <file>textures/terrain/skybox_negx.png</file>
+        <file>textures/terrain/skybox_negy.png</file>
+        <file>textures/terrain/skybox_negz.png</file>
+        <file>textures/terrain/skybox_posx.png</file>
+        <file>textures/terrain/skybox_posy.png</file>
+        <file>textures/terrain/skybox_posz.png</file>
+        <file>textures/terrain/back.jpg</file>
+        <file>textures/terrain/bottom.jpg</file>
+        <file>textures/terrain/front.jpg</file>
+        <file>textures/terrain/left.jpg</file>
+        <file>textures/terrain/right.jpg</file>
+        <file>textures/terrain/top.jpg</file>
     </qresource>
 </RCC>
