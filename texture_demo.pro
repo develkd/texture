@@ -30,7 +30,8 @@ HEADERS      += \
     material/wireframe.h \
     material/vectors.h \
     geometry/parametric.h \
-    cumbemap.h
+    cumbemap.h \
+    material/skybox.h
 
 # C++ SOURCE FILES TO BE COMPILED AND LINKED TOGETHER
 SOURCES      += \
@@ -55,7 +56,8 @@ SOURCES      += \
     material/wireframe.cpp \
     material/vectors.cpp \
     geometry/parametric.cpp \
-    cubemap.cpp
+    cubemap.cpp \
+    material/skybox.cpp
 
 # RESOURCE FILES TO BE PROCESSED BY QT
 RESOURCES    += \

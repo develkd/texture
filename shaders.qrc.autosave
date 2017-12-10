@@ -19,7 +19,5 @@
         <file>shaders/terrain.vert</file>
         <file>shaders/terrain_simple.frag</file>
         <file>shaders/terrain_simple.vert</file>
-        <file>shaders/skybox.frag</file>
-        <file>shaders/skybox.vert</file>
     </qresource>
 </RCC>
