@@ -6,6 +6,7 @@
 
 #include "geometry/cube.h"       // geom::Cube
 #include "geometry/parametric.h" // geom::Sphere
+#include "cumbemap.h"
 
 #include <QtMath>
 #include <QMessageBox>
@@ -82,6 +83,8 @@ void Scene::makeNodes()
     vectorsMaterial_ = std::make_shared<VectorsMaterial>(vectors_prog);
     vectorsMaterial_->vectorToShow  = 0;
 
+    Cumbemap cubemap = Cumbemap();
+    std::shared_ptr<QOpenGLTexture> cMap = cubemap.makeCubeMap();
     // load textures
     auto day    = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_day.jpg").mirrored());
     auto night  = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_at_night_2048.jpg").mirrored());

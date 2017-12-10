@@ -7,13 +7,17 @@ Cumbemap::Cumbemap()
 
 
 std::shared_ptr<QOpenGLTexture>
-Cumbemap::makeCubeMap(string path_to_images, std::array<string, 6> sides)
+Cumbemap::makeCubeMap()
 {
+       std::array<std::string, 6> sides =
+                {{":/textures/terrain/right.jpg", ":/textures/terrain/top.jpg",
+                  ":/textures/terrain/front.jpg", ":/textures/terrain/left.jpg",
+                  ":/textures/terrain/bottom.jpg", ":/textures/terrain/back.jpg"}};
 
     // load six images for the six sides of the cube
     std::vector<QImage> images;
     for(auto side : sides) {
-        QString filename = (path_to_images + "/" + side).c_str();
+        QString filename = ( side).c_str();
         images.push_back( QImage(filename)./*mirrored().*/
                           convertToFormat(QImage::Format_RGBA8888) );
     }
