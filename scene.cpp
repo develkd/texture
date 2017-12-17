@@ -65,8 +65,11 @@ void Scene::makeNodes()
     auto planet_prog = createProgram(":/shaders/planet_with_bumps.vert", ":/shaders/planet_with_bumps.frag");
     auto rock_prog = createProgram(":/shaders/texture/mars.vert", ":/shaders/texture/mars.frag");
     auto sky_prog = createProgram(":/shaders/texture/skybox.vert", ":/shaders/texture/skybox.frag");
+    auto terrain_prog = createProgram(":/shaders/texture/terrainshader.vert", ":/shaders/texture/terrainshader.frag");
+
     planetMaterial_ = std::make_shared<PlanetMaterial>(planet_prog);
     rockMaterial_ = std::make_shared<PlanetMaterial>(rock_prog);
+    skyMaterial_ = std::make_shared<PlanetMaterial>(terrain_prog);
 
     planetMaterial_->phong.shininess = 10;
     rockMaterial_->phong.shininess = 10;
