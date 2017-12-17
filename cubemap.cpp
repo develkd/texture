@@ -10,9 +10,10 @@ std::shared_ptr<QOpenGLTexture>
 Cumbemap::makeCubeMap()
 {
        std::array<std::string, 6> sides =
-                {{":/textures/terrain/right.jpg", ":/textures/terrain/top.jpg",
-                  ":/textures/terrain/front.jpg", ":/textures/terrain/left.jpg",
-                  ":/textures/terrain/bottom.jpg", ":/textures/terrain/back.jpg"}};
+                {{":/textures/terrain/skybox_posx.png", ":/textures/terrain/skybox_negx.png",
+                  ":/textures/terrain/skybox_posy.png", ":/textures/terrain/skybox_negy.png",
+                  ":/textures/terrain/skybox_posz.png", ":/textures/terrain/skybox_negz.png"}};
+
 
     // load six images for the six sides of the cube
     std::vector<QImage> images;

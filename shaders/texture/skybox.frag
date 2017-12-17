@@ -1,4 +1,6 @@
-#version 150 core
+#version 330 core
+
+
 in vec2 uvI;
 in vec3 positionFragment;
 
