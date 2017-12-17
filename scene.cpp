@@ -84,7 +84,7 @@ void Scene::makeNodes()
     vectorsMaterial_ = std::make_shared<VectorsMaterial>(vectors_prog);
     vectorsMaterial_->vectorToShow  = 0;
 
-    Cumbemap cubemap = Cumbemap();
+    Cumbemap cubemap;
     std::shared_ptr<QOpenGLTexture> cMap = cubemap.makeCubeMap();
     // load textures
     auto day    = std::make_shared<QOpenGLTexture>(QImage(":/textures/earth_day.jpg").mirrored());
@@ -136,6 +136,7 @@ void Scene::makeNodes()
     meshes_["Torus"]  = std::make_shared<Mesh>(make_shared<geom::Torus>(4, 2, 120,40), std);
     meshes_["Rect"]   = std::make_shared<Mesh>(make_shared<geom::Rect>(10,10), rockMaterial_);
     meshes_["CubeMap"]   = std::make_shared<Mesh>(make_shared<geom::CubeMap>(512,512), rockMaterial_);
+    meshes_["SkyBox"]   = std::make_shared<Mesh>(make_shared<geom::CubeMap>(512,512), rockMaterial_);
 
     // pack each mesh into a scene node, along with a transform that scales
     // it to standard size [1,1,1]

@@ -72,4 +72,14 @@ public:
 
 };
 
+
+
+class SkyMap : public ParametricSurface {
+public:
+
+    // make unit rectangle in X-Z plane
+    SkyMap(size_t patches_u, size_t patches_v);
+
+};
+
 } // namespace geom

@@ -23,5 +23,7 @@
         <file>shaders/texture/terrain_simple.vert</file>
         <file>shaders/texture/water.vert</file>
         <file>shaders/texture/water.frag</file>
+        <file>shaders/texture/terrainshader.frag</file>
+        <file>shaders/texture/terrainshader.vert</file>
     </qresource>
 </RCC>
