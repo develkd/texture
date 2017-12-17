@@ -63,7 +63,7 @@ void Scene::makeNodes()
 {
     // load shader source files and compile them into OpenGL program objects
     auto planet_prog = createProgram(":/shaders/planet_with_bumps.vert", ":/shaders/planet_with_bumps.frag");
-    auto rock_prog = createProgram(":/shaders/mars.vert", ":/shaders/mars.frag");
+    auto rock_prog = createProgram(":/shaders/texture/mars.vert", ":/shaders/texture/mars.frag");
     planetMaterial_ = std::make_shared<PlanetMaterial>(planet_prog);
     rockMaterial_ = std::make_shared<PlanetMaterial>(rock_prog);
 

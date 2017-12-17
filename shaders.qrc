@@ -13,13 +13,13 @@
         <file>shaders/wireframe.frag</file>
         <file>shaders/wireframe.geom</file>
         <file>shaders/wireframe.vert</file>
-        <file>shaders/mars.frag</file>
-        <file>shaders/mars.vert</file>
-        <file>shaders/terrain.frag</file>
-        <file>shaders/terrain.vert</file>
-        <file>shaders/terrain_simple.frag</file>
-        <file>shaders/terrain_simple.vert</file>
-        <file>shaders/skybox.frag</file>
-        <file>shaders/skybox.vert</file>
+        <file>shaders/texture/mars.frag</file>
+        <file>shaders/texture/mars.vert</file>
+        <file>shaders/texture/skybox.frag</file>
+        <file>shaders/texture/skybox.vert</file>
+        <file>shaders/texture/terrain.frag</file>
+        <file>shaders/texture/terrain.vert</file>
+        <file>shaders/texture/terrain_simple.frag</file>
+        <file>shaders/texture/terrain_simple.vert</file>
     </qresource>
 </RCC>
